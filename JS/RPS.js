@@ -7,7 +7,7 @@ function playerChoice() {
   let ask = true;
 
   while (ask) {
-    let playerInput = prompt("Please choose between rock, paper or sciccors");
+    let playerInput = prompt("Please choose between rock, paper or scissors");
 
     if (playerInput == null) {
       alert("Quitter!!!");
