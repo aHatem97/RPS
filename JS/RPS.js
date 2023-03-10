@@ -1,13 +1,13 @@
 let playerScore = 0;
 let computerScore = 0;
 let draw = 0;
+let round = 0;
 
 function playerChoice() {
   let ask = true;
 
   while (ask) {
     let playerInput = prompt("Please choose between rock, paper or sciccors");
-    console.log("Player Choice: " + playerInput);
 
     if (playerInput == null) {
       alert("Quitter!!!");
@@ -17,6 +17,8 @@ function playerChoice() {
       playerInput.toLowerCase() === "paper" ||
       playerInput.toLowerCase() === "scissors"
     ) {
+      playerInput = playerInput.toLowerCase();
+      console.log(`Player Choice: ${playerInput}`);
       ask = false;
       return playerInput;
     } else {
@@ -46,36 +48,49 @@ function computerChoice() {
 
 function playRound(playerSelection, computerSelection) {
   if (playerSelection === computerSelection) {
+    alert(`Round Draw! ${playerSelection} draws with ${computerSelection}`);
     return draw++;
   } else if (
     (playerSelection === "rock" && computerSelection === "scissors") ||
     (playerSelection === "paper" && computerSelection === "rock") ||
     (playerSelection === "scissors" && computerSelection === "paper")
-  )
+  ) {
+    alert(`Round Won! ${playerSelection} beats ${computerSelection}!`);
     return playerScore++;
-  else return computerScore++;
+  } else alert(`Round Lost! ${computerSelection} beats ${playerSelection}`);
+  return computerScore++;
 }
 
 function game() {
   for (let i = 0; i < 5; i++) {
-    if (playerScore > 2) {
+    if (playerScore > 2 || (playerScore >= 2 && draw > 1)) {
       i = 5;
-    } else if (computerScore > 2) {
+    } else if (computerScore > 2 || (computerScore >= 2 && draw > 1)) {
       i = 5;
     } else {
       let playerSelection = playerChoice();
       let computerSelection = computerChoice();
       playRound(playerSelection, computerSelection);
-      console.log("Player score: " + playerScore);
-      console.log("Computer score: " + computerScore);
+      round++;
+      console.log(`Player Score: ${playerScore}`);
+      console.log(`Computer Score: ${computerScore}`);
+      console.log("-------------------------------------");
+      console.log(`End of Round: ${round}`);
+      console.log("-------------------------------------");
     }
   }
   if (playerScore > computerScore) {
-    alert(`You won! ${playerScore} vs ${computerScore} (${draw} draw)`);
+    alert(
+      `Congratulations, Game won! ${playerScore} vs ${computerScore} (${draw} draw)`
+    );
   } else if (playerScore < computerScore) {
-    alert(`You Lost! ${playerScore} vs ${computerScore} (${draw} draw)`);
+    alert(
+      `Unfortunately, Game Lost! ${playerScore} vs ${computerScore} (${draw} draw)`
+    );
   } else {
-    alert(`It's a draw! ${playerScore} vs ${computerScore}`);
+    alert(
+      `Game Ended With A Draw! ${playerScore} vs ${computerScore} (${draw} draw)`
+    );
   }
 }
 
