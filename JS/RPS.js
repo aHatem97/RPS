@@ -3,7 +3,6 @@ let round = 0;
 
 //function to validate player name
 function playerNameValidation() {
-  //Player Name Validation
   let ask = true;
 
   while (ask) {
@@ -18,6 +17,40 @@ function playerNameValidation() {
     } else {
       alert(
         "Error: Please make sure to enter an appropriate name\nName has to be between 1 and 9 letters."
+      );
+      ask = true;
+    }
+  }
+}
+
+//function to ask the player if they want to start over again
+function gameOver() {
+  let ask = true;
+
+  while (ask) {
+    let endGameChoice = prompt(
+      "Game Over! Would you like to start a new one?\n1) Restart\n2) Close"
+    );
+
+    if (endGameChoice == null) {
+      alert("Thank you for playing our RPS game! <3");
+      ask = false;
+    } else if (
+      endGameChoice.toLowerCase() === "restart" ||
+      endGameChoice === "1"
+    ) {
+      ask = false;
+      startGame();
+    } else if (
+      endGameChoice.toLowerCase() === "close" ||
+      endGameChoice === "2"
+    ) {
+      alert("Thank you for playing our RPS game! <3");
+      ask = false;
+      return endGameChoice;
+    } else {
+      alert(
+        "You have to enter a valid choice between '1' , '2', 'Restart' or 'Close' or feel free to close the window from the close button :)"
       );
       ask = true;
     }
@@ -166,17 +199,18 @@ function playAgainstComputer() {
   }
   if (playerScore > computerScore) {
     alert(
-      `Congratulations, Game won! ${playerScore} vs ${computerScore} (${draw} draw)`
+      `Congratulations, You won! ${playerScore} vs ${computerScore} (${draw} draw)`
     );
   } else if (playerScore < computerScore) {
     alert(
-      `Unfortunately, Game Lost! ${playerScore} vs ${computerScore} (${draw} draw)`
+      `Unfortunately, You Lost! ${playerScore} vs ${computerScore} (${draw} draw)`
     );
   } else {
     alert(
       `Game Ended With A Draw! ${playerScore} vs ${computerScore} (${draw} draw)`
     );
   }
+  gameOver();
 }
 
 // Function to play against another player
@@ -237,6 +271,8 @@ function playAgainstPlayer() {
       `Game Ended With A Draw! ${player1Score} vs ${player2Score} (${draw} draw)`
     );
   }
+
+  gameOver();
 }
 
 // Function to start the game
