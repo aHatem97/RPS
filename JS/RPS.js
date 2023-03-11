@@ -72,7 +72,10 @@ function pvePlayerChoice() {
     } else if (
       playerInput.toLowerCase() === "rock" ||
       playerInput.toLowerCase() === "paper" ||
-      playerInput.toLowerCase() === "scissors"
+      playerInput.toLowerCase() === "scissors" ||
+      playerInput.toLowerCase() === "r" ||
+      playerInput.toLowerCase() === "p" ||
+      playerInput.toLowerCase() === "s"
     ) {
       playerInput = playerInput.toLowerCase();
       console.log(`%cPlayer Choice: ${playerInput}`, `color: green`);
@@ -100,7 +103,10 @@ function pvpPlayer1Choice(player1Name) {
     } else if (
       playerInput.toLowerCase() === "rock" ||
       playerInput.toLowerCase() === "paper" ||
-      playerInput.toLowerCase() === "scissors"
+      playerInput.toLowerCase() === "scissors" ||
+      playerInput.toLowerCase() === "r" ||
+      playerInput.toLowerCase() === "p" ||
+      playerInput.toLowerCase() === "s"
     ) {
       playerInput = playerInput.toLowerCase();
       console.log(`%c${player1Name} Choice: ${playerInput}`, `color: green`);
@@ -128,7 +134,10 @@ function pvpPlayer2Choice(player2Name) {
     } else if (
       playerInput.toLowerCase() === "rock" ||
       playerInput.toLowerCase() === "paper" ||
-      playerInput.toLowerCase() === "scissors"
+      playerInput.toLowerCase() === "scissors" ||
+      playerInput.toLowerCase() === "r" ||
+      playerInput.toLowerCase() === "p" ||
+      playerInput.toLowerCase() === "s"
     ) {
       playerInput = playerInput.toLowerCase();
       console.log(`%c${player2Name} Choice: ${playerInput}`, `color: red`);
@@ -179,9 +188,12 @@ function playAgainstComputer() {
         alert(`Round Draw! ${playerSelection} draws with ${computerSelection}`);
         draw++;
       } else if (
-        (playerSelection === "rock" && computerSelection === "scissors") ||
-        (playerSelection === "paper" && computerSelection === "rock") ||
-        (playerSelection === "scissors" && computerSelection === "paper")
+        playerSelection === "rock" ||
+        (playerSelection === "r" && computerSelection === "scissors") ||
+        playerSelection === "paper" ||
+        (playerSelection === "p" && computerSelection === "rock") ||
+        playerSelection === "scissors" ||
+        (playerSelection === "s" && computerSelection === "paper")
       ) {
         alert(`Round Won! ${playerSelection} beats ${computerSelection}!`);
         playerScore++;
@@ -236,9 +248,12 @@ function playAgainstPlayer() {
         alert(`Round Draw! ${player1Selection} draws with ${player2Selection}`);
         draw++;
       } else if (
-        (player1Selection === "rock" && player2Selection === "scissors") ||
-        (player1Selection === "paper" && player2Selection === "rock") ||
-        (player1Selection === "scissors" && player2Selection === "paper")
+        ((player1Selection === "rock" || player1Selection === "r") &&
+          (player2Selection === "scissors" || player2Selection === "s")) ||
+        ((player1Selection === "paper" || player1Selection === "p") &&
+          (player2Selection === "rock" || player2Selection === "r")) ||
+        ((player1Selection === "scissors" || player1Selection === "s") &&
+          (player2Selection === "paper" || player2Selection === "p"))
       ) {
         alert(
           `${player1Name} wins! ${player1Selection} beats ${player2Selection}!`
