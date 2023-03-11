@@ -91,7 +91,7 @@ function pvpPlayer1Choice(player1Name) {
 
   while (ask) {
     let playerInput = prompt(
-      "Player 1: Please Choose Between Rock, Paper or Scissors!"
+      `${player1Name}: Please Choose Between Rock, Paper or Scissors!`
     );
 
     if (playerInput == null) {
@@ -119,7 +119,7 @@ function pvpPlayer2Choice(player2Name) {
 
   while (ask) {
     let playerInput = prompt(
-      "Player 2: Please Choose Between Rock, Paper or Scissors!"
+      `${player2Name}: Please Choose Between Rock, Paper or Scissors!`
     );
 
     if (playerInput == null) {
