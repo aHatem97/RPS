@@ -164,9 +164,11 @@ function computerChoice() {
 function playAgainstComputer() {
   let playerScore = 0;
   let computerScore = 0;
+
   alert(
     "Player Vs Computer Rules:\n1) No Quitting!\n2) Don't try to type anything other than 'Rock', 'Paper' or 'Scissors'\n3) Best of 5 wins!"
   );
+
   for (let i = 0; i < 5; i++) {
     if (playerScore > 2 || (playerScore >= 2 && draw > 1)) {
       i = 5;
@@ -197,6 +199,7 @@ function playAgainstComputer() {
       console.log("-------------------------------------");
     }
   }
+
   if (playerScore > computerScore) {
     alert(
       `Congratulations, You won! ${playerScore} vs ${computerScore} (${draw} draw)`
@@ -258,6 +261,7 @@ function playAgainstPlayer() {
       console.log("-------------------------------------");
     }
   }
+
   if (player1Score > player2Score) {
     alert(
       `Congratulations, ${player1Name} wins! ${player1Score} vs ${player2Score} (${draw} draw)`
